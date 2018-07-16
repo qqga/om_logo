@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+margin:0;
+overflow:hidden;
+}
+#om-canvas-cont{
+position:absolute;
+left:0px;
+top:0px;
+width:100px;
+height:100px;
+
+z-index:-5;
+  -webkit-transition-property: top, left;
+  -webkit-transition-duration: 1s;
+  transition: top 1s, left 1s; 
+}
+</style>
+<script src='..\..\dist\b4w.min.js'></script>
+
+</head>
+<body>
+<div id='om-canvas-cont'>
+</div>
+
+
+<ol>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+<li>asdfasdfkl;sdfa;'sdlfk;asldfklk;laksd;'lkf;laks'dfl;ka'la;sd,fl;AS'DL;FML'</li>
+</ol>
+
+
+
+
+
+<script>
+let waitTimeBeforeObserveMouse = 500;
+var app =b4w.require('app');
+var data =b4w.require('data');
+var omCanvasCont = document.getElementById('om-canvas-cont');
+
+function init() {
+
+   new app.init({
+        canvas_container_id: "om-canvas-cont",
+        callback: init_cb,
+        physics_enabled: false,
+        alpha: true,       
+		autoresize:true
+    });
+
+	function init_cb(canvas_elem, success) {
+    if (!success) {
+        console.log("b4w init failure");
+        return;
+    }
+
+    var load_path = "om_logo_project.json";
+
+    data.load(load_path, load_cb);
+
+    
+
+    //window.addEventListener("resize", resize);
+}
+}
+function load_cb(){
+}
+
+init();
+
+//omCanvasCont.addEventListener('mouseenter',randomizePos)
+function randomizePos(){
+let y = window.innerHeight * Math.random();
+let x = window.innerWidth * Math.random();
+omCanvasCont.style.left = x+'px';
+omCanvasCont.style.top = y+'px';//getComputedStyle(omCanvasCont).top
+}
+
+setTimeout(function(){
+//omCanvasCont.style.top = '1px';
+//omCanvasCont.style.left = '1px';
+document.addEventListener('mousemove',moveWithMouse);
+
+},waitTimeBeforeObserveMouse);
+
+//document.addEventListener('mousemove',moveWithMouse);
+function moveWithMouse(e){
+
+omCanvasCont.style.top = e.pageY - parseInt( getComputedStyle(omCanvasCont).height) +'px' ;
+omCanvasCont.style.left = +e.pageX +'px';
+
+}
+</script>
+
+</body>
+</html>

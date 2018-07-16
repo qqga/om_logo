@@ -1,0 +1,28 @@
+[info]
+author = XD
+icon = 
+name = om_logo_project
+title = OM logo
+
+[paths]
+assets_dirs = projects/om_logo_project/assets;
+blend_dirs = projects/om_logo_project/blender;
+blender_exec = C:\Program Files\Blender Foundation\Blender\blender.exe
+build_dir = projects/om_logo_project/build
+deploy_dir = 
+
+[compile]
+apps = 
+css_ignore = 
+engine_type = copy
+ignore = 
+js_ignore = 
+optimization = whitespace
+use_physics = True
+
+[deploy]
+assets_path_dest = assets
+assets_path_prefix = assets
+ignore = 
+override = 
+
